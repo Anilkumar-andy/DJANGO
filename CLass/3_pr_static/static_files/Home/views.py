@@ -11,7 +11,6 @@ def f_html(request):
    img_url = static('img/')
 
 def firstpage(request):
-   img_url = static('img/hub.jpg')
    return render(request,"index.html")
 
 '''
