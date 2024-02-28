@@ -1,14 +1,24 @@
-<form action="{% url'search_blogs' %}" method="get">
-    {% csrf_token %}
-    <input type="text"name="q"placeholder="Search Blog">
-    <button type="submit">Search</button>
-</form>
-<h1>The posts are:</h1>
-{% fro post in posts %}
-<div>
-    <div></div>
-    <h3>{{post.title}}</h3>
-    <p>{{post.created}}</p>
-    <a href="{% url'post_detail' pk=post.id %}" >Read More</a>
-</div>
-{% endfor %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="{% url'search_blogs' %}" method="get">
+        {% csrf_token %}
+        <input type="text"name="q"placeholder="Search Blog">
+        <button type="submit">Search</button>
+    </form>
+    <h1>The posts are:</h1>
+    {% fro post in posts %}
+    <div>
+        <div></div>
+        <h3>{{post.title}}</h3>
+        <p>{{post.created}}</p>
+        <a href="{% url'post_detail' pk=post.id %}">Read More</a>
+    </div>
+    {% endfor %}
+</body>
+</html>
