@@ -17,14 +17,14 @@ def add_to_cart(request):
             quantity=quantity,
             price=price
         )
-    return redirect('cart:shopping_cart_view')
+    return redirect('shopping_cart:cart_view')
 
 @login_required
 def remove_from_cart(request,item_id):
     # Handle removing item from cart
     cart_item= CartItem.objects.get(id= item_id)
     cart_item.delete()
-    return redirect('cart:shopping_cart_view')
+    return redirect('shopping_cart:cart_view')
 
 @login_required
 def cart_view(request):
@@ -35,4 +35,4 @@ def cart_view(request):
         'cart_items':cart_items,
         'total_price':total_price
     }
-    return render(request,'shopping/cart.html', context)
+    return render(request,'shopping_cart/cart.html', context)
