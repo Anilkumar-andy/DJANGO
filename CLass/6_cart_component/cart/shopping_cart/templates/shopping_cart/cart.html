@@ -33,7 +33,7 @@
                     {% endfor %}
                 </ul>
                 <p class="mb-4">Total Price: ${{ total_price }}</p>
-    path("",views.cart_view, name='cart_view'),
+    
                 <form action="{% url 'shopping_cart:add_to_cart' %}" method="post" class="mb-4">
                     {% csrf_token %}
                     <div class="mb-3">
