@@ -12,7 +12,7 @@ def add_to_cart(request):
         price = float(request.POST.get('price'))
         #you need to handle cart managemnt here
         CartItem.objects.create(
-            user = request.User,
+            user = request.user,
             product_name = product_name,
             quantity=quantity,
             price=price
