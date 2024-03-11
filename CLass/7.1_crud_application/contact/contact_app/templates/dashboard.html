@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Data</h1>
+    <table align="center" border="1">
+        <tr>
+            <th>sr.no</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile</th>
+            <th>Message</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+
+        {% for d in data %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ d.name }}</td>
+            <td>{{ d.email }}</td>
+            <td>{{ d.mobile }}</td>
+            <td>{{ d.msg }}</td>
+            <td><a href="/edit/{{id.id}}">Edit</a></td>
+            <td><a href="/delete/{{id.id}}">Delete</a></td>
+            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
