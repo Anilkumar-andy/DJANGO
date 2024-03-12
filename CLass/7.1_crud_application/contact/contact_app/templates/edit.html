@@ -6,6 +6,28 @@
     <title>Document</title>
 </head>
 <body>
-    
+
+    <h1>Edit message!</h1>
+    <h1>Edit Contact us</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label>Enter name</label>
+        <br>
+        <input type="text" name="uname" value="{{ data.0.name }}">
+        <br>
+        <label> Email id</label>
+        <br>
+        <input type="text" name="uemail" value="{{ data.0.email}}">
+        <br>
+        <label> Mobile no</label>
+        <br>
+        <input type="text" name="mobile" value="{{ data.0.mobile}}">
+        <br>
+        <label>Message</label>
+        <br>
+        <textarea name="msg" cols="30" rows="10" > {{ data.0.msg }} </textarea>
+        <br>
+        <input type="submit" value="send">
+    </form>
 </body>
 </html>

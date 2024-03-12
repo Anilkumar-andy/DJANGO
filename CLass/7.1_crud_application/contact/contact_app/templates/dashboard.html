@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>Data</h1>
+    <a href=""> <button> Add Data </button></a>
     <table align="center" border="1">
         <tr>
             <th>sr.no</th>
@@ -25,8 +26,8 @@
             <td>{{ d.email }}</td>
             <td>{{ d.mobile }}</td>
             <td>{{ d.msg }}</td>
-            <td><a href="/edit/{{id.id}}">Edit</a></td>
-            <td><a href="/delete/{{id.id}}">Delete</a></td>
+            <td><a href="/edit/{{d.id}}">Edit</a></td>
+            <td><a href="/delete/{{d.id}}">Delete</a></td>
             
         </tr>
         {% endfor %}
