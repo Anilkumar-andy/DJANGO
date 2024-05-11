@@ -1,0 +1,18 @@
+car_env) F:\pogramming\Django\practise\cars_pr\CARS>python manage.py shell    
+Python 3.12.3 (tags/v3.12.3:f6650f9, Apr  9 2024, 14:05:25) [MSC v.1938 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from .models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+KeyError: "'__name__' not in globals"
+>>> from home.models import *
+>>> Cars.objects.all()
+<QuerySet [<Cars: Cars object (1)>, <Cars: Cars object (2)>]>
+>>> Cars.objects.all()[0].name
+'Supra'
+>>> Cars.objects.all()[1].name 
+'Supra MK3'
+>>> exit()
+
+(car_env) F:\pogramming\Django\practise\cars_pr\CARS>
