@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+
+{% block start %}
+    <a href="/about/">about</a>
+    <a href="{% url '_contact' %}">contact</a>
+    <h3>home template</h3>
+    <p>{{ variable_name }}</p>
+    <table class="container">
+        <thead class="">
+          <th>Sr.No</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>can vote</th>
+        </thead>
+        <tbody>
+            {% for iterable in variable_name %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{iterable.name}}</td>
+                <td>{{iterable.age}}</td>
+                <td {% if iterable.age <= 21 %} style="background-color: red;" {% else %} style="background-color: green;" {% endif %} >
+                    {% if iterable.age > 21 %}
+                    👍
+                    {% else %}
+                    👎
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>    
+    </table>
+    <p>
+        {{ text| truncatechars:30}}
+    </p>
+    <p>
+        {% if 'supra' in vechiles %}
+        <em>car</em>
+        {% else %}
+        <em>bike</em>
+        {% endif %}
+    </p>
+    <p>
+        {% firstof empty_list vechiles %}
+    </p>
+{% endblock %}
