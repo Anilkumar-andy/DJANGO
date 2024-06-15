@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>user loged in was Successful</h2>
+<div class="container mt-5">
+    <p>FirstName: {{user.first_name}}</p>
+    <p>LastName: {{user.last_name}}</p>
+    <p>Username: {{user.username}}</p>
+
+</div>
+
+{% endblock %}

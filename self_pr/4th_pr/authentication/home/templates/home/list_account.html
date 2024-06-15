@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>List of User</h2>
+<div class="mt-5">
+    <form>
+        <div class="mx-auto col-5">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Search A/c</label>
+                <input type="text" class="form-control" name="search_ac">
+            </div>
+            <button type="submit" class="btn btn-primary">search</button>
+            <button type="button" class="btn btn-secondary" onclick="resetSearch()">Show All Users</button>
+        </div>
+    </form>
+</div>
+<table class="container table table-bordered border-black bg-danger-subtle mt-5">
+    <thead>
+        <tr>
+            <th scope="col" class="bg-danger-subtle">Sr.Id</th>
+            <th scope="col" class="bg-danger-subtle">First</th>
+            <th scope="col" class="bg-danger-subtle">Last</th>
+            <th scope="col" class="bg-danger-subtle">Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ACC in ac %}
+        <tr>
+            <th scope="row">{{ ACC.id }}</th>
+            <td>{{ ACC.first_name }}</td>
+            <td>{{ ACC.last_name }}</td>
+            <td>{{ ACC.username }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

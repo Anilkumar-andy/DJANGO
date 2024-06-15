@@ -1,0 +1,42 @@
+{% extends 'home/base.html' %}
+
+{% block start %}
+<div class="container mt-5">
+    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- enctype="multipart/form-data" this added to make sure fiule gets uploaded -->
+        <h3>UPDATE CAR</h3>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">CAR Name</label>
+            <input type="text" value="{{ car.name }}" required class="form-control" name="name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">CAR Color</label>
+            <input type="text" value="{{ car.color }}" required class="form-control" name="color">
+        </div>
+        <div class="mb-3">
+            <p>Uploaded CAR Image</p>
+            <img src="/media/{{ car.image }}" style="height: 200px"><br>
+            <label for="exampleInputPassword1" class="form-label">Upload New CAR Image</label>
+            <input type="file" class="form-control" name="image">
+        </div>
+        <div class="mb-3">
+            <label for="id_drive_type" class="form-label">Drive type</label>
+            <select class="form-control" id="id_drive_type" name="drive_type">
+                <option value="FWD">Front Wheel Drive</option>
+                <option value="RWD">Rear Wheel Drive</option>
+                <option value="4WD">Four Wheel Drive</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">CAR Description</label>
+            <textarea class="form-control" id="id_desc" name="desc" rows="4">{{ car.desc }}</textarea>
+        </div>
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+            <label class="form-check-label" for="exampleCheck1">confirm submit</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Add car</button>
+    </form>
+</div>
+{% endblock %}

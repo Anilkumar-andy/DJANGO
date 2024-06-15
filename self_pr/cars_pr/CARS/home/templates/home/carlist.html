@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+
+{% block start %}
+<p>list of objects</p>
+<p>{{ cars_data }}</p>
+<div class="mt-5">
+  <form>
+    <div class="mx-auto col-5">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Search Cars</label>
+        <input type="text" class="form-control" name="search">
+      </div>
+      <button type="submit" class="btn btn-primary">search</button>
+    </div>
+  </form>
+</div>
+
+<table class="table mt-5">
+  <thead>
+    <tr>
+      <th scope="col">sr.no</th>
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Color</th>
+      <th scope="col">Drive</th>
+      <th scope="col">Description</th>
+      <th scope="col">Image</th>
+      <th scope="col">Delete</th>
+      <th scope="col">Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for car in cars_data %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <th scope="row">{{ car.id }}</th>
+      <td>{{ car.name }}</td>
+      <td>{{ car.color }}</td>
+      <td>{{ car.get_drive_type_display }}</td>
+      <td>{{ car.desc }}</td>
+      <td>
+        <img src="/media/{{ car.image }}" style="height: 100px">
+      </td>
+      <td>
+        <a href="/delete/{{car.id}}" class="btn btn-danger">delete</a>
+      </td>
+      <td>
+        <a href="/update/{{car.id}}" class="btn btn-success">update</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

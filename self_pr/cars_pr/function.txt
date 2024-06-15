@@ -1,0 +1,1 @@
+In Django, when you define a URL pattern with a variable part (like <id> in your example), Django captures the value of that part from the URL and passes it to the associated view function as an argument. In your case, the URL pattern delete/<id>/ captures the id from the URL and passes it to the delete view function.
