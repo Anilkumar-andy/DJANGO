@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div style="padding: 10px 20px; ">
+    <p style=" border:black 2px solid;display: inline-block ; padding: 10px 20px; ">
+        <a href="{% url 'register-supplier' %}">Register supplier</a>
+    </p>
+    <div class="d-grid gap-2 my-5 mx-5">
+        <button
+            type="button"
+            name=""
+            id=""
+            class="btn btn-primary"
+            onclick="window.location.href='{% url 'register-customer' %}'">
+            Register customer
+        </button>
+    </div>
+</div>
+
+{% endblock %}

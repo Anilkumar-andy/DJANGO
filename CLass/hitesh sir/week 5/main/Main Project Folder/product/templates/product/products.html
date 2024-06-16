@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- <a href="{% url 'about-us' %}">about-us</a> -->
+
+
+<!-- <a href="{% url 'add-product' %}">add Product</a> -->
+
+<div class="table-responsive">
+    <table class="table table-primary">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Brand</th>
+                <th scope="col">Brand Logo</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+
+            <tr class="">
+                <td scope="row"><img src="{{product.image.url}}"
+                         alt="no image"></td>
+                <td>{{product.name}}
+                </td>
+                <td>{{product.price}}
+                </td>
+                <td>
+                    {{product.brand.name}}</td>
+                <td>{% if product.brand.logo %}
+                    <img src="{{product.brand.logo.url}}"
+                         alt="no image">
+                    {% endif %}
+                </td>
+                <td>
+                    <a href="/product/details/{{product.id}}">Details</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    
+<a href="{% url 'add-product' %}">Add Product</a>
+
+</div>
+
+
+
+{% endblock %}
