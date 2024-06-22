@@ -1,0 +1,143 @@
+(env_6th_pr) D:\pogramming\Django\practise\6th_pr\reportcard_project>python manage.py shell
+Python 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from students.models import *
+>>> from students.seed import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "D:\pogramming\Django\practise\6th_pr\reportcard_project\students\seed.py", line 1, in <module>  
+    from faker import Faker
+ModuleNotFoundError: No module named 'faker'
+>>> from students.seed import *
+>>> seed_db(500)
+UNIQUE constraint failed: students_student.student_email
+>>> seed_db(500)
+UNIQUE constraint failed: students_student.student_email
+>>> exit()
+
+(env_6th_pr) D:\pogramming\Django\practise\6th_pr\reportcard_project>python manage.py shell 
+Python 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from students.models import *
+>>> create_subject_marks(100)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'create_subject_marks' is not defined
+>>> from students.seed import *   
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "D:\pogramming\Django\practise\6th_pr\reportcard_project\students\seed.py", line 38
+    subject = subject
+
+SyntaxError: invalid syntax. Perhaps you forgot a comma?
+>>> from students.seed import *
+>>> create_subject_marks(100)   
+>>>  
+
+>>> queryset_ranks[0]      
+<Student: Teresa Murphy>
+>>> queryset_ranks[0].student_id
+<StudentID: STU-03684>
+>>> exit()
+
+(env_6th_pr) D:\pogramming\Django\practise\6th_pr\reportcard_project>
+(env_6th_pr) D:\pogramming\Django\practise\6th_pr\reportcard_project>python manage.py shell
+Python 3.12.4 (tags/v3.12.4:8e8a4ba, Jun  6 2024, 19:30:16) [MSC v.1940 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from students.seed import * 
+>>> from .models import *
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+KeyError: "'__name__' not in globals"
+>>> from student.models import * 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+ModuleNotFoundError: No module named 'student'
+>>> from students.models import * 
+>>> queryset = ReportCard.objects.all()
+>>> queryset.delete()
+(487, {'students.ReportCard': 487})
+>>> from students.seed import *         
+>>> generate_report_card()              
+>>> from students.models import *
+>>>     Queryset_rank=get_object_or_404(ReportCard,student_id__student_id=student_id)
+  File "<console>", line 1
+    Queryset_rank=get_object_or_404(ReportCard,student_id__student_id=student_id)
+IndentationError: unexpected indent
+>>> Queryset_rank=get_object_or_404(ReportCard,student_id__student_id=student_id)     
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'get_object_or_404' is not defined
+>>>
+>>> from django.shortcuts import render,get_object_or_404
+>>> Queryset_rank=get_object_or_404(ReportCard,student_id__student_id=student_id)
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'student_id' is not defined. Did you mean: 'StudentID'?
+>>> Queryset_rank=get_object_or_404(ReportCard,student_ID__student_id=student_id) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'student_id' is not defined. Did you mean: 'StudentID'?
+>>> Queryset_rank=get_object_or_404(ReportCard,student_id__student_ID=student_id) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'student_id' is not defined. Did you mean: 'StudentID'?
+>>> Queryset_rank=get_object_or_404(ReportCard,student_id__Student_ID=student_id) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'student_id' is not defined. Did you mean: 'StudentID'?
+>>> Queryset_rank=get_object_or_404(ReportCard,StudentID__student_id=student_id)  
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'student_id' is not defined. Did you mean: 'StudentID'?
+>>> Queryset_rank=get_object_or_404(ReportCard,student_id__StudentID=student_id) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'student_id' is not defined. Did you mean: 'StudentID'?
+>>> Queryset_rank=get_object_or_404(ReportCard,student_id__StudentID=student_id) 
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'student_id' is not defined. Did you mean: 'StudentID'?
+>>>  Queryset_rank=get_object_or_404(ReportCard,student__student_id__student_id=STU-03684)  
+  File "<console>", line 1
+    Queryset_rank=get_object_or_404(ReportCard,student__student_id__student_id=STU-03684)
+IndentationError: unexpected indent
+>>> Queryset_rank=get_object_or_404(ReportCard,student__student_id__student_id=STU-03684)  
+  File "<console>", line 1
+    Queryset_rank=get_object_or_404(ReportCard,student__student_id__student_id=STU-03684)
+                                                                                   ^
+SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers
+>>> Queryset_rank=ReportCard.objects.all(student__student_id__student_id=STU-03684)       
+  File "<console>", line 1
+    Queryset_rank=ReportCard.objects.all(student__student_id__student_id=STU-03684)
+                                                                             ^
+SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers
+>>> Queryset_rank=ReportCard.objects.filter(student__student_id__student_id=STU-03684)            
+  File "<console>", line 1
+    Queryset_rank=ReportCard.objects.filter(student__student_id__student_id=STU-03684)
+                                                                                ^
+SyntaxError: leading zeros in decimal integer literals are not permitted; use an 0o prefix for octal integers
+>>> Queryset_rank=get_object_or_404(ReportCard,student__student_id__student_id='STU-03684') 
+>>> queryset
+<QuerySet [<ReportCard: ReportCard object (488)>, <ReportCard: ReportCard object (489)>, <ReportCard: ReportCard object (490)>, <ReportCard: ReportCard object (491)>, <ReportCard: ReportCard object (492)>, <ReportCard: ReportCard object (493)>, <ReportCard: ReportCard object (494)>, <ReportCard: ReportCard object (495)>, <ReportCard: ReportCard object (496)>, <ReportCard: ReportCard object (497)>, <ReportCard: ReportCard object (498)>, <ReportCard: ReportCard object (499)>, <ReportCard: ReportCard object (500)>, <ReportCard: ReportCard object (501)>, <ReportCard: ReportCard object (502)>, <ReportCard: ReportCard object (503)>, <ReportCard: ReportCard object (504)>, <ReportCard: ReportCard object (505)>, <ReportCard: ReportCard object (506)>, <ReportCard: ReportCard object (507)>, '...(remaining elements truncated)...']> 
+>>> queryset_rank
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'queryset_rank' is not defined. Did you mean: 'Queryset_rank'?
+>>> queryset_rank
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'queryset_rank' is not defined. Did you mean: 'Queryset_rank'?
+>>> Queryset_rank=get_object_or_404(ReportCard,student__student_id__student_id='STU-03684')
+>>> Queryset_rank
+<ReportCard: ReportCard object (488)>
+>>>
+ *  History restored 
+
+Microsoft Windows [Version 10.0.19045.4529]
+(c) Microsoft Corporation. All rights reserved.
+
+D:\pogramming>

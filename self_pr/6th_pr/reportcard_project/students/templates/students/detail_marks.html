@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="h2">Name:{{ queryset_name.student_name }}</div>
+<div class="h4">Total Marks:{{ total_marks.total_marks }}</div>
+<div class="h4">Current Rank:{{ queryset_rank.student_rank }}</div>
+
+<table class="table table-hover border">
+    <thead>
+        <tr>
+            <th scope="col">sr.no</th>
+            <th scope="col">subject_name</th>
+            <th scope="col">Marks</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for marks in queryset %}
+        <tr>
+            <td>{{forloop.counter}}</th>
+            <td>{{marks.subject.subject_name}}</th>
+            <td>{{marks.marks}}</td>
+            <td>{{student.student_age}}</td>
+            <td>{{student.student_email}}</td>
+            <td>{{student.student_address}}</td>
+            <td>{{student.department.department}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
