@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse,FileResponse
 from django.shortcuts import render,redirect,get_object_or_404
+from django.contrib.auth.models import User
 from .forms import ProductForm
+from account.views import mail_send_new
 import os
 from .models import Product
 
@@ -48,6 +50,8 @@ def show_product(request):
     context = {
         'products':p
     }
+    u = get_object_or_404(User,pk=10)
+    mail_send_new(request,p,u)
     return render(request,"product/products.html",context)
 
 

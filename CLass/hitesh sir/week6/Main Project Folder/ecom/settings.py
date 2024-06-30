@@ -144,4 +144,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMIAL_HOST_USER = 'iam.anil.25.11@gmail.com'
-EMAIL_HOST_PASSWORD = 'sgjf drxi tfba yvfy'
+EMAIL_HOST_PASSWORD = 'bswv gvhb mnsd frsu'

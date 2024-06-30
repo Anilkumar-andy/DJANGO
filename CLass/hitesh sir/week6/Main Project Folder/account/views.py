@@ -6,7 +6,7 @@ from django.views import View
 from django.conf import settings
 from django.core.mail import send_mail
 from django.http import HttpResponse
-
+from django.template.loader import render_to_string
 
 # Create your views here.
 class LoginView(View):
@@ -126,3 +126,13 @@ def mail_send(request):
 
     send_mail(subject=subject,message=message, from_email = from_, recipient_list=[to,])
     return HttpResponse("Done,<a href = '/account/mail/'>send more</a>")
+
+def mail_send_new(request,products,user):
+    subject = 'liST of new Products'
+    to = user.email
+    message = "hey this is are the new products"
+    from_ =settings.EMAIL_HOST_USER
+    src="https://static1.cbrimages.com/wordpress/wp-content/uploads/2024/01/roronoa-zoro.jpg"
+    context = {'name':user.username,'src':src,'products':products}
+    html_data = render_to_string('account/message.html',context)
+    send_mail(subject=subject,html_message=html_data,message=message,from_email=from_,recipient_list=[to,])
