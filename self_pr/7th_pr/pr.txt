@@ -1,0 +1,75 @@
+in this project we are not using username instead we are using email or phone number
+
+
+The fields is_staff, is_superuser, and is_active are commonly used in Django's user authentication system. They are boolean fields that determine the status and permissions of a user. Here is an explanation of each field:
+
+
+is_staff
+Purpose: Indicates whether the user is allowed to access the Django admin site.
+Meaning:
+True: The user can log into the admin site.
+False: The user cannot log into the admin site.
+Typical Usage: This is used to distinguish between regular users and those who can manage site content via the admin interface.
+is_superuser
+Purpose: Indicates whether the user has all permissions without explicitly assigning them.
+Meaning:
+True: The user has all permissions and can perform any administrative task.
+False: The user's permissions are limited to those explicitly granted.
+Typical Usage: This is used to create a superuser with full access to all aspects of the Django site, including the ability to manage other users and their permissions.
+is_active
+Purpose: Indicates whether the user account should be considered active.
+Meaning:
+True: The user account is active and the user can log in.
+False: The user account is inactive and the user cannot log in.
+Typical Usage: This field is useful for deactivating user accounts without deleting them. Inactive users are not allowed to authenticate and access the site.
+
+
+create_user Method
+Phone Number Check: The method checks if a phone number is provided, raising a ValueError if not.
+Normalize Email: The extra_fields['email'] is normalized using the normalize_email method. This ensures that the email is in a standard format.
+User Instance Creation: The method creates an instance of the user model with the provided phone_number and other fields (extra_fields).
+Set Password: The set_password method is called on the user instance to hash the password.
+Save User: The user instance is saved to the database using the specified database (using self.db).
+
+create_superuser Method
+Set Default Values: The method sets default values for is_staff, is_superuser, and is_active in the extra_fields dictionary. This ensures that the superuser has the appropriate permissions and status.
+Create User: The method calls create_user with the provided phone_number, password, and extra_fields.
+Key Differences and Explanation
+Normalization of Email:
+In the create_user method, the email normalization is done explicitly with the line extra_fields['email'] = self.normalize_email(extra_fields['email']). This is necessary to ensure that the email is always stored in a normalized format.
+In the create_superuser method, the create_user method is called directly, which already includes the email normalization step. Thus, there is no need to repeat it in create_superuser.
+Creating a Superuser:The create_superuser method sets specific flags (is_staff, is_superuser, is_active) to ensure the created user has the necessary permissions and is active.
+By calling create_user within create_superuser, it reuses the logic defined in create_user, including the phone number check, email normalization, setting the password, and saving the user. This avoids code duplication and ensures consistency.
+The create_user method contains the core logic for creating any user, including normalizing the email and setting the password. The create_superuser method simply ensures that the user has the necessary superuser permissions and then delegates the actual user creation to create_user. This design keeps the code DRY (Don't Repeat Yourself) and maintains consistency in the user creation process.
+
+
+
+
+
+
+In Django, the AUTH_USER_MODEL setting is used to specify a custom user model. By default, Django uses its built-in User model from django.contrib.auth.models. However, for many projects, the default user model may not meet all the requirements, so Django allows you to specify a custom user model.
+
+AUTH_USER_MODEL='accounts.CustomUser' Explained
+The setting AUTH_USER_MODEL='accounts.CustomUser' tells Django to use the CustomUser model located in the accounts app as the user model for authentication instead of the default User model.
+When you set AUTH_USER_MODEL = 'accounts.CustomUser' in your Django settings.py, you're configuring Django to use a custom user model instead of the default one. This custom user model is defined in the accounts application and is named CustomUser. Let's break down the implications, attributes, file system naming, and properties of this setting:
+
+Implications of AUTH_USER_MODEL
+Custom User Model: You are telling Django to use the CustomUser model from the accounts app for all authentication and user-related functionalities.
+Django Auth System: All references to the user model throughout Django's authentication system will point to this custom model.
+Attributes and Properties of the Custom User Model
+When you create a custom user model, you typically define it with various attributes (fields) and properties. Here's an example of what a CustomUser model might look like:
+
+No, you do not have to use the fixed name "CustomUser" for your custom user model. You can name your custom user model anything you like. The name "CustomUser" is just a convention used in examples to clearly indicate that it is a user model that has been customized.
+
+The key requirement is that the name you use in your model definition matches the name you reference in the AUTH_USER_MODEL setting.
+
+
+The manager.py file is not a standard part of Django applications, but the term might be confused with Django's custom model managers, which are typically defined in the models.py file. Custom model managers in Django allow you to add extra manager methods to your models. These are useful for encapsulating queries you use frequently, making your code cleaner and more reusable.
+
+Custom Model Managers in Django
+Custom model managers are used to add extra methods to Django's default objects manager. They can be defined within the same file as your model (typically models.py). The purpose of these managers is to provide encapsulated methods for queries you use often.
+
+Here's a detailed explanation with examples:
+
+Example with Custom Manager
+Suppose you have a custom user model MyUser and you want to create a custom manager to handle specific user-related queries and operations. You can define a custom manager class and use it in your model.
